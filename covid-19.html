@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Indis's covid 19 status</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <table class="table table-sm ">
+            <tr class="table-active">
+                <td><p>Country</p></td>
+                <td><p id="Country"></p></td>
+            </tr>
+            <tr class="table-primary">
+                <td><p>NewConfirmed:</p></td>
+                <td><p id="NewConfirmed"></p></td>
+            </tr>
+            <tr class="table-secondary">
+                <td><p>NewDeaths:</p></td>
+                <td><p id="NewDeaths"></p></td>
+            </tr>
+            <tr class="table-success">
+                <td><p>NewRecovered:</p></td>
+                <td><p id="NewRecovered"></p></td>
+            </tr>
+            <tr class="table-danger">
+                <td><p>TotalConfirmed::</p></td>
+                <td><p id="TotalConfirmed"></p></td>
+            </tr>
+            <tr class="table-warning">
+                <td><p>TotalDeaths:</p></td>
+                <td><p id="TotalDeaths"></p></td>
+            </tr>
+            <tr class="table-info">
+                <td><p>TotalRecovered:</p></td>
+                <td><p id="TotalRecovered"></p></td>
+            </tr>
+        </table>
+    </body>
+</html>
+
+
+<script type="text/javascript">
+fetch('https://api.covid19api.com/summary').then(
+ (reaponse)=>
+ {
+     return reaponse.json();
+ }).then((data)=>{
+     indian=data.Countries[76];
+     document.getElementById('Country').innerHTML=indian.Country;
+     document.getElementById('NewConfirmed').innerHTML=indian.NewConfirmed;
+     document.getElementById('NewDeaths').innerHTML=indian.NewDeaths;
+     document.getElementById('NewRecovered').innerHTML=indian.NewRecovered;
+     document.getElementById('TotalConfirmed').innerHTML=indian.TotalConfirmed;
+     document.getElementById('TotalDeaths').innerHTML=indian.TotalDeaths;
+     document.getElementById('TotalRecovered').innerHTML=indian.TotalRecovered;
+     
+    console.log(indian);
+ }).catch((error)=> 
+ {
+    console.log("error");
+ });
+</script>
